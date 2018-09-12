@@ -52,3 +52,4 @@ I try to create Osquery pack that can cover some elements of the ATT&CK
 * The query interval of each conf file is not tuned, so please test it in a test enviroments (suggestions are welcome)
 * Suggestions and improvements are welcome for each query pack conf file.
 * All the query output must sent to sistme like ELK or Splunk that correlate and alert.
+* The project has just started, so stick around ;)
