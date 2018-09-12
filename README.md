@@ -18,4 +18,6 @@ I try to create Osquery pack that can cover some elements of the ATT&CK
 
 ##  ATT&CK MAPPING
 - **windows-registry-monitoring.conf**
-    - ATT&CK T1015,T1138,T1131,T1037,T1128,T1060,T1180,T1004,T1058,T1103,T1112
+    - ATT&CK: T1015,T1138,T1131,T1037,T1128,T1060,T1180,T1004,T1058,T1103,T1112
+- **windows-incorrect_parent_process.conf**
+    - ATT&CK: T1173,T1086,T1204,T1183
