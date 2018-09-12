@@ -8,7 +8,7 @@ Mapping the MITRE ATT&CK Matrix with Osquery
 
 
 I try to create Osquery pack that can cover some elements of the ATT&CK
-## Query Pack Descriprion
+## Windows Query Pack Descriprion
 
 - **windows-registry-monitoring.conf** : Track all the change in the **registry** for malware persistency. The registry path are the path that can be find here:
     https://attack.mitre.org/wiki/Persistence. A second article that explain some presistency method https://www.countercept.com/our-thinking/hunting-for-application-shim-databases
@@ -20,7 +20,7 @@ I try to create Osquery pack that can cover some elements of the ATT&CK
 - **windows_persistence-startup_items.conf** : This check retrieve the programm that start when the OS start.
 
 
-##  ATT&CK MAPPING
+## Windows ATT&CK MAPPING
 - **windows-registry-monitoring.conf**
     - ATT&CK: T1015,T1138,T1131,T1037,T1128,T1060,T1180,T1004,T1058,T1103,T1112
 - **windows-incorrect_parent_process.conf**
