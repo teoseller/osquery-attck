@@ -4,8 +4,6 @@ The goal of this repository is to try to map the MITRE ATT&CK with the Osquery f
 
 Each conf file is a Query Pack that can be used enterprise threat hunting wit osquery. 
 
-The folder **osquery-minimal-conf** contain a minimal subset of the conf files in the home directory.
-
 Mapping the MITRE ATT&CK Matrix with Osquery
 
 
