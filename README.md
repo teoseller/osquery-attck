@@ -27,6 +27,8 @@ I try to create Osquery pack that can cover some elements of the ATT&CK
 - **windows_anomaly_process-execution.conf** : This Check try to catch anomaly process execution in the Enterprise environment.
 - **windows_generic_detection.conf** : This is a generic detection query pack.
 - **windows_browsere-extensions.conf** : This check retrive the IExplorer and Chrome Browser browsere extensions.
+- **windows_new_dir_relevant_infection_path.conf** : This check retrive new directory creation under common path used by the malware for install and store file. 
+- **windows_new_file_relevant_infection_path.conf** : This check retrive new file creation under common path used by the malware for install and store file. This check return also the MD5 so you can double check with your Threat Intelligence, Virustotal website or other tools. 
 
 ## Windows ATT&CK MAPPING
 - **windows-registry-monitoring.conf**
