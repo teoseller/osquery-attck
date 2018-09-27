@@ -1,3 +1,5 @@
+![Osquery-ATT&CK](https://raw.githubusercontent.com/teoseller/osquery-attck/docs/osqueryattck.JPG)
+
 # Osquery-ATT&CK
 
 The goal of this repository is to try to map the MITRE ATT&CK with the Osquery for enterprise threat hunting.
