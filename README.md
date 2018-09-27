@@ -1,4 +1,4 @@
-![Osquery-ATT&CK](https://github.com/teoseller/osquery-attck/blob/master/docs/osqueryattck.JPG)
+![Osquery-ATT&CK](https://github.com/teoseller/osquery-attck/blob/master/docs/osquery_attck.JPG)
 
 # Osquery-ATT&CK
 
