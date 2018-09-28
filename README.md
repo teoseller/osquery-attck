@@ -45,7 +45,7 @@ I try to create Osquery pack that can cover some elements of the ATT&CK
     - ATT&CK: T1050
 - **windows_critical_service_status.conf**
     - ATT&CK: T1089
-- **windows_scheduled_tasks.conf** : This check retrive scheduled tasks of the system
+- **windows_scheduled_tasks.conf**
     - ATT&CK: T1053
 - **network_connection_listening.conf**
     - ATT&CK: T1086,T1093,T1020,T1041,T1011,T1029,T1043,T1090,T1094,T1024,T1008,T1219,T1105,T1065
