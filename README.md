@@ -41,21 +41,24 @@ I try to create Osquery pack that can cover some elements of the ATT&CK
     - ATT&CK: T1034,T1121,T1117,T1085
 - **windows_persistence-startup_items.conf**
     - ATT&CK: T1060
-- **windows_service-persistence.conf** : This check retrive the service that start automatically
+- **windows_service-persistence.conf**
     - ATT&CK: T1050
-- **windows_critical_service_status.conf** : This check retrive critical service status change. So is possible to catch the attackers that stop a critical service like Windows Firewall Service. 
+- **windows_critical_service_status.conf**
     - ATT&CK: T1089
 - **windows_scheduled_tasks.conf** : This check retrive scheduled tasks of the system
     - ATT&CK: T1053
-- **network_connection_listening.conf** : This check retrive the network connection of the system and the listening port
+- **network_connection_listening.conf**
     - ATT&CK: T1086,T1093,T1020,T1041,T1011,T1029,T1043,T1090,T1094,T1024,T1008,T1219,T1105,T1065
-- **windows_anomaly_process-execution.conf** : This Check try to catch the anomaly process execution in the Enterprise environment. **THIS IS EXPERIMENTAL** because the queries can miss some process execution.
+- **windows_anomaly_process-execution.conf**
     - ATT&CK: T1191,T1118,T1059,T1170,T1086,T1117,T1053,T1035,T1197,T1128,T1134,T1126,T1087,T1201,T1069,T1057,T1012,T1018,T1063,T1082,T1049,T1007,T1124,T1076
-- **windows_generic_detection.conf** : This is a generic detection query pack.
+- **windows_generic_detection.conf**
     - ATT&CK: T1136,T1078,T1116,T1075,T1097
-- **windows_browsere-extensions.conf** : This check retrive the IExplorer and Chrome Browser browsere extensions.
+- **windows_browsere-extensions.conf**
     - ATT&CK: T1176
-
+- **windows_new_dir_relevant_infection_path.conf**
+    - ATT&CK: T1034,T1074,T1044,T1060,T1023
+- **windows_new_file_relevant_infection_path.conf**
+    - ATT&CK: T1034,T1074,T1044,T1060,T1023
 
 ## Notes
 
