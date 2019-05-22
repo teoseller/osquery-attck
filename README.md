@@ -39,7 +39,7 @@ I try to create Osquery pack that can cover some elements of the ATT&CK
 - **linux_command_execution.conf** : This check retrive the shell_history for each users on the system
 - **linux_home_root_hidden_file_directory.conf** : This check retrive hidden file and directory in home and root path
 - **linux_relevant_folder_check.conf** : This check retrive hidden file and directory in relevant path 
-- **linux_users_check.conf**: This check retrive create and deleted account, all logged in users and last logged in users
+- **linux_users_check.conf** : This check retrive create and deleted account, all logged in users and last logged in users
 - **linux_browser_extensions.conf** : This check retrive Chrome, Firefox and Opera extensions  (Thanks @FritzX6)
 - **linux_kernel_modules_and_extensions.conf** : This check try to retrive loading, unloading, and manipulating modules on Linux systems 
 
