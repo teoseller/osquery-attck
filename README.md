@@ -10,7 +10,8 @@ Mapping the MITRE ATT&CK Matrix with Osquery
 
 
 I try to create Osquery pack that can cover some elements of the ATT&CK
-## Windows Query Pack Description
+## Query Pack Descriprion
+### Windows
 
 - **windows-registry-monitoring.conf** : Track all the change in the **registry** for malware persistency. The registry path are the path that can be find here:
     https://attack.mitre.org/wiki/Persistence. A second article that explain some persistency method https://www.countercept.com/our-thinking/hunting-for-application-shim-databases
@@ -30,7 +31,20 @@ I try to create Osquery pack that can cover some elements of the ATT&CK
 - **windows_new_dir_relevant_infection_path.conf** : This check retrive new directory creation under common path used by the malware for install and store file. 
 - **windows_new_file_relevant_infection_path.conf** : This check retrive new file creation under common path used by the malware for install and store file. This check return also the MD5 so you can double check with your Threat Intelligence, Virustotal website or other tools. 
 
-## Windows ATT&CK MAPPING
+### Linux
+- **linux_network_connections.conf** : This check retrive the network connection of the system, the listening port and possible reverse shell on the system (Thanks to @clong).
+- **generic_linux.conf** : Generic query for retrieve useful info for SIEM side anomaly detection
+- **linux_running_processes** : This check retrive the system running processes list  with CMDLINE not null.
+- **linux_local_job_scheduling.conf** : This check retrive local job scheduling with Cron
+- **linux_command_execution.conf** : This check retrive the shell_history for each users on the system
+- **linux_home_root_hidden_file_directory.conf** : This check retrive hidden file and directory in home and root path
+- **linux_relevant_folder_check.conf** : This check retrive hidden file and directory in relevant path 
+- **linux_users_check.conf**: This check retrive create and deleted account, all logged in users and last logged in users
+- **linux_browser_extensions.conf** : This check retrive Chrome, Firefox and Opera extensions  (Thanks @FritzX6)
+- **linux_kernel_modules_and_extensions.conf** : This check try to retrive loading, unloading, and manipulating modules on Linux systems 
+
+##  ATT&CK MAPPING
+### Windows ATT&CK MAPPING
 - **windows-registry-monitoring.conf**
     - ATT&CK: T1015,T1138,T1131,T1037,T1128,T1060,T1180,T1004,T1058,T1103,T1112
 - **windows-incorrect_parent_process.conf**
@@ -59,10 +73,32 @@ I try to create Osquery pack that can cover some elements of the ATT&CK
     - ATT&CK: T1034,T1074,T1044,T1060,T1023
 - **windows_new_file_relevant_infection_path.conf**
     - ATT&CK: T1034,T1074,T1044,T1060,T1023
-
+### Linux ATT&CK MAPPING
+- **linux_network_connections.conf**
+    - ATT&CK: T1108,T1100,T1102,T1105,T1039,T1029,T1011,T1041,T1048,T1020,T1094,,T1043T1065,T1071,T1219,T1104,T1008,T1001,T1132,T1090
+- **generic_linux.conf**
+    - ATT&CK: T1059,T1169,T1206,T1025,T1052
+- **linux_running_processes.cond** 
+    - ATT&CK: T1059,T1108,T1166,T1100,T1064,T1107,T1003,T1033,T1016,T1082,T1057,T1201,T1083,T1217,T1087,T1072,T1002
+- **linux_local_job_scheduling.conf**
+    - ATT&CK: T1168
+- **linux_command_execution.conf**
+    - ATT&CK: T1064,T1059,T1153,T1166,T1100,T1055,T1222,T1107,T1146,T1081,T1003,T1033,T1016,T1082,T1201,T1083,T1217,T1087
+- **linux_home_root_hidden_file_directory.conf**
+    - ATT&CK: T1158,T1100
+- **linux_relevant_folder_check.conf**
+    - ATT&CK: T1158,T1100
+-  **linux_users_check.conf**
+    -  ATT&CK: T1136,T1078
+-  **linux_browser_extensions.conf**
+    -  ATT&CK: T1176
+-  **linux_kernel_modules_and_extensions.conf**
+    -  ATT&CK: T1215
+    
 ## Notes
 
 * The query interval of each conf file is not tuned, so please test it in a test environment (suggestions are welcome)
 * Suggestions and improvements are welcome for each query pack conf file.
 * All the query output must sent to system like ELK or Splunk that correlate and alert.
+* For linux_relevant_folder_check.conf the WHERE clause must tuned to adjust the query for your environments needs
 * The project has just started, so stick around ;)
