@@ -32,7 +32,7 @@ I try to create Osquery pack that can cover some elements of the ATT&CK
 - **windows_new_file_relevant_infection_path.conf** : This check retrive new file creation under common path used by the malware for install and store file. This check return also the MD5 so you can double check with your Threat Intelligence, Virustotal website or other tools. 
 
 ### Linux
-- **linux_network_connections.conf** : This check retrive the network connection of the system, the listening port and possible reverse shell on the system (Thanks to @clong).
+- **linux_network_connections.conf** : This check retrive the network connection of the system, the listening port and possible reverse shell on the system (Thanks @clong).
 - **generic_linux.conf** : Generic query for retrieve useful info for SIEM side anomaly detection
 - **linux_running_processes** : This check retrive the system running processes list  with CMDLINE not null.
 - **linux_local_job_scheduling.conf** : This check retrive local job scheduling with Cron
