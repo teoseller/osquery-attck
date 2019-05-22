@@ -34,7 +34,7 @@ I try to create Osquery pack that can cover some elements of the ATT&CK
 ### Linux
 - **linux_network_connections.conf** : This check retrive the network connection of the system, the listening port and possible reverse shell on the system (Thanks @clong).
 - **generic_linux.conf** : Generic query for retrieve useful info for SIEM side anomaly detection
-- **linux_running_processes** : This check retrive the system running processes list  with CMDLINE not null.
+- **linux_running_processes.conf** : This check retrive the system running processes list  with CMDLINE not null.
 - **linux_local_job_scheduling.conf** : This check retrive local job scheduling with Cron
 - **linux_command_execution.conf** : This check retrive the shell_history for each users on the system
 - **linux_home_root_hidden_file_directory.conf** : This check retrive hidden file and directory in home and root path
