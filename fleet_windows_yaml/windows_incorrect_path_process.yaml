@@ -1,0 +1,175 @@
+---
+apiVersion: v1
+kind: pack
+spec:
+  disabled: false
+  name: windows-incorrect_path_process
+  queries:
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1034
+    interval: 3600
+    name: conhost.exe_incorrect_path
+    query: conhost.exe_incorrect_path
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1034
+    interval: 3600
+    name: crss.exe_incorrect_path
+    query: crss.exe_incorrect_path
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1034
+    interval: 3600
+    name: dllhost.exe_incorrect_path
+    query: dllhost.exe_incorrect_path
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1034
+    interval: 3600
+    name: explorer.exe_incorrect_path
+    query: explorer.exe_incorrect_path
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1034
+    interval: 3600
+    name: lsass.exe_incorrect_path
+    query: lsass.exe_incorrect_path
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1034
+    interval: 3600
+    name: services.exe_incorrect_path
+    query: services.exe_incorrect_path
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1034
+    interval: 3600
+    name: smss.exe_incorrect_path
+    query: smss.exe_incorrect_path
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1034
+    interval: 3600
+    name: svchost.exe_incorrect_path
+    query: svchost.exe_incorrect_path
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1034
+    interval: 3600
+    name: wininit.exe_incorrect_path
+    query: wininit.exe_incorrect_path
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1034
+    interval: 3600
+    name: winlogon.exe_incorrect_path
+    query: winlogon.exe_incorrect_path
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1034
+    interval: 3600
+    name: wmiprvse.exe_incorrect_path
+    query: wmiprvse.exe_incorrect_path
+    removed: false
+  targets:
+    labels: null
+    teams: null
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1034
+  name: conhost.exe_incorrect_path
+  query: SELECT * FROM processes WHERE LOWER(name)='conhost.exe' AND LOWER(path)!='c:\windows\system32\conhost.exe'
+    AND path!='';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1034
+  name: crss.exe_incorrect_path
+  query: SELECT * FROM processes WHERE LOWER(name)='crss.exe' AND LOWER(path)!='c:\windows\system32\crss.exe'
+    AND path!='';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1034
+  name: dllhost.exe_incorrect_path
+  query: SELECT * FROM processes WHERE LOWER(name)='dllhost.exe' AND LOWER(path)!='c:\windows\system32\dllhost.exe'
+    AND LOWER(path)!='c:\windows\syswow64\dllhost.exe' AND path!='';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1034
+  name: explorer.exe_incorrect_path
+  query: SELECT * FROM processes WHERE LOWER(name)='explorer.exe' AND LOWER(path)!='c:\windows\explorer.exe'
+    AND LOWER(path)!='c:\windows\syswow64\explorer.exe' AND path!='';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1034
+  name: lsass.exe_incorrect_path
+  query: SELECT * FROM processes WHERE LOWER(name)='lsass.exe' AND LOWER(path)!='c:\windows\system32\lsass.exe'
+    AND path!='';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1034
+  name: services.exe_incorrect_path
+  query: SELECT * FROM processes WHERE LOWER(name)='services.exe' AND LOWER(path)!='c:\windows\system32\services.exe'
+    AND path!='';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1034
+  name: smss.exe_incorrect_path
+  query: SELECT * FROM processes WHERE LOWER(name)='smss.exe' AND LOWER(path)!='c:\windows\system32\smss.exe'
+    AND path!='';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1034
+  name: svchost.exe_incorrect_path
+  query: SELECT * FROM processes WHERE LOWER(name)='svchost.exe' AND LOWER(path)!='c:\windows\system32\svchost.exe'
+    AND LOWER(path)!='c:\windows\syswow64\svchost.exe' AND path!='';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1034
+  name: wininit.exe_incorrect_path
+  query: SELECT * FROM processes WHERE LOWER(name)='wininit.exe' AND LOWER(path)!='c:\windows\system32\wininit.exe'
+    AND path!='';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1034
+  name: winlogon.exe_incorrect_path
+  query: SELECT * FROM processes WHERE LOWER(name)='winlogon.exe' AND LOWER(path)!='c:\windows\system32\winlogon.exe'
+    AND path!='';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1034
+  name: wmiprvse.exe_incorrect_path
+  query: SELECT * FROM processes WHERE LOWER(name)='wmiprvse.exe' AND LOWER(path)!='c:\windows\system32\wbem\wmiprvse.exe'
+    AND LOWER(path)!='c:\windows\syswow64\wbem\wmiprvse.exe' AND path!='';

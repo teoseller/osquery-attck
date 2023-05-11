@@ -1,0 +1,386 @@
+---
+apiVersion: v1
+kind: pack
+spec:
+  disabled: false
+  name: windows-registry-monitoring
+  queries:
+  - description: Returns the content of the key HKCU_Control Panel_Desktop - ATT&CK
+      T1180
+    interval: 3600
+    name: HKCU_Control Panel_Desktop
+    query: HKCU_Control Panel_Desktop
+    removed: false
+  - description: Returns the content of the key HKCU_Software_Microsoft_WindowsNT_CurrentVersion_winlogon
+      - ATT&CK T1004
+    interval: 3600
+    name: HKCU_CurrentVersion_Winlogon
+    query: HKCU_CurrentVersion_Winlogon
+    removed: false
+  - description: Returns the content of the key HKCU_Software_Microsoft_Windows_CurrentVersion_Policies_Explorer_Run
+      - ATT&CK T1060
+    interval: 3600
+    name: HKCU_Explorer_Run
+    query: HKCU_Explorer_Run
+    removed: false
+  - description: Returns the content of the key HKEY_CURRENT_USER_Environment - ATT&CK
+      T1037
+    interval: 3600
+    name: HKCU_Logon_Scripts
+    query: HKCU_Logon_Scripts
+    removed: false
+  - description: Returns the content of the key HKCU_Software_Microsoft_Windows_CurrentVersion_Run
+      - ATT&CK T1060
+    interval: 3600
+    name: HKCU_Run
+    query: HKCU_Run
+    removed: false
+  - description: Returns the content of the key HKLM_Software_Microsoft_WindowsNT_CurrentVersion_winlogon
+      - ATT&CK T1004
+    interval: 3600
+    name: HKLM_CurrentVersion_Winlogon
+    query: HKLM_CurrentVersion_Winlogon
+    removed: false
+  - description: Returns the content of the key HKLM_Software_Microsoft_Windows_CurrentVersion_Policies_Explorer_Run
+      - ATT&CK T1060
+    interval: 3600
+    name: HKLM_Explorer_Run
+    query: HKLM_Explorer_Run
+    removed: false
+  - description: Returns the content of the key HKLM_Image_File_Execution_Options
+      - ATT&CK T1015
+    interval: 3600
+    name: HKLM_Image_File_Execution_Options
+    query: HKLM_Image_File_Execution_Options
+    removed: false
+  - description: '**AppInit DLLs** Returns the content of the key HKLM_Software_Microsoft_WindowsNT_CurrentVersion_Windows
+      - ATT&CK T1103'
+    interval: 3600
+    name: HKLM_Windows
+    platform: windows
+    query: HKLM_Windows
+    removed: false
+  - description: Returns the content of the key HKLM_Software_Wow6432Node_Microsoft_WindowsNT_CurrentVersion_winlogon
+      - ATT&CK T1004
+    interval: 3600
+    name: HKLM_Wow6432Node_CurrentVersion_Winlogon
+    query: HKLM_Wow6432Node_CurrentVersion_Winlogon
+    removed: false
+  - description: '**AppInit DLLs** Returns the content of the key HKLM_Software_Wow6432Node_Microsoft_Windows
+      NT_CurrentVersion_Windows - ATT&CK T1103'
+    interval: 3600
+    name: HKLM_Wow6432Node_Windows
+    query: HKLM_Wow6432Node_Windows
+    removed: false
+  - description: '**Application Shimming** Returns the content of the key HKLM_Software_Microsoft_WindowsNT_CurrentVersion_appcompatflags_custom
+      - ATT&CK T1138'
+    interval: 3600
+    name: HKLM_appcompatflags_custom
+    query: HKLM_appcompatflags_custom
+    removed: false
+  - description: '**Application Shimming** Returns the content of the key HKLM_Software_Microsoft_WindowsNT_CurrentVersion_appcompatflags_installedsdb
+      - ATT&CK T1138'
+    interval: 3600
+    name: HKLM_appcompatflags_installedsdb
+    query: HKLM_appcompatflags_installedsdb
+    removed: false
+  - description: Returns the content of the key HKLM_SYSTEM_CurrentControlSet_Control_Lsa
+      - ATT&CK T1131
+    interval: 3600
+    name: HKLM_lsa
+    query: HKLM_lsa
+    removed: false
+  - description: Returns the content of the key HKLM_SYSTEM_CurrentControlSet_Control_Lsa
+      - ATT&CK T1128,S0108
+    interval: 3600
+    name: HKLM_netsh
+    query: HKLM_netsh
+    removed: false
+  - description: Returns the content of the key HKLM_SYSTEM_CurrentControlSet_Service
+      - ATT&CK T1058
+    interval: 3600
+    name: HKLM_service
+    query: HKLM_service
+    removed: false
+  - description: Returns the content of the key HKU_Software_Microsoft_Windows_CurrentVersion_Run
+    interval: 3600
+    name: HKU_CurrentVersion_Run
+    query: HKU_CurrentVersion_Run
+    removed: false
+  - description: Returns the content of the key HKCU_Software_Microsoft_Windows_CurrentVersion_Policies_Explorer_Run
+      - ATT&CK T1060
+    interval: 28800
+    name: Snaphost_HKCU_Explorer_Run
+    query: Snaphost_HKCU_Explorer_Run
+    snapshot: true
+  - description: Returns the content of the key HKCU_Software_Microsoft_Windows_CurrentVersion_Run
+      - ATT&CK T1060
+    interval: 28800
+    name: Snaphost_HKCU_Run
+    query: Snaphost_HKCU_Run
+    snapshot: true
+  - description: Returns the content of the key HKLMU_Software_Microsoft_Windows_CurrentVersion_Policies_Explorer_Run
+      - ATT&CK T1060
+    interval: 28800
+    name: Snaphost_HKLM_Explorer_Run
+    query: Snaphost_HKLM_Explorer_Run
+    snapshot: true
+  - description: '**AppInit DLLs** Snapshot Returns the content of the key HKLM_Software_Wow6432Node_Microsoft_Windows
+      NT_CurrentVersion_Windows - ATT&CK T1103'
+    interval: 28800
+    name: Snaphost_HKLM_Wow6432Node_windows
+    query: Snaphost_HKLM_Wow6432Node_windows
+    snapshot: true
+  - description: '**Application Shimming** Snapshot Returns the content of the key
+      HKLM_Software_Microsoft_WindowsNT_CurrentVersion_appcompatflags_custom - ATT&CK
+      T1138'
+    interval: 28800
+    name: Snaphost_HKLM_appcompatflags_custom
+    query: Snaphost_HKLM_appcompatflags_custom
+    snapshot: true
+  - description: '**Application Shimming** Snapshot Returns the content of the key
+      HKLM_Software_Microsoft_WindowsNT_CurrentVersion_appcompatflags_installedsdb
+      - ATT&CK T1138'
+    interval: 28800
+    name: Snaphost_HKLM_appcompatflags_installedsdb
+    query: Snaphost_HKLM_appcompatflags_installedsdb
+    snapshot: true
+  - description: Snapshot Returns the content of the key HKLM_SYSTEM_CurrentControlSet_Service
+      - ATT&CK T1058
+    interval: 28800
+    name: Snaphost_HKLM_service
+    query: Snaphost_HKLM_service
+    snapshot: true
+  - description: '**AppInit DLLs** Snapshot Returns the content of the key HKLM_Software_Microsoft_WindowsNT_CurrentVersion_Windows
+      - ATT&CK T1103'
+    interval: 28800
+    name: Snaphost_HKLM_windows
+    query: Snaphost_HKLM_windows
+    snapshot: true
+  - description: Returns the content of the key HKU_Software_Microsoft_Windows_CurrentVersion_Run
+    interval: 28800
+    name: Snaphost_HKU_CurrentVersion_Run
+    query: Snaphost_HKU_CurrentVersion_Run
+    snapshot: true
+  targets:
+    labels: null
+    teams: null
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKCU_Control Panel_Desktop - ATT&CK
+    T1180
+  name: HKCU_Control Panel_Desktop
+  query: select name,type,data from registry where key='HKEY_CURRENT_USER\Control
+    Panel\Desktop';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKCU_Software_Microsoft_WindowsNT_CurrentVersion_winlogon
+    - ATT&CK T1004
+  name: HKCU_CurrentVersion_Winlogon
+  query: select name,type,data from registry where key='HKEY_CURRENT_USER\Software\Microsoft\Windows
+    NT\CurrentVersion\Winlogon';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKCU_Software_Microsoft_Windows_CurrentVersion_Policies_Explorer_Run
+    - ATT&CK T1060
+  name: HKCU_Explorer_Run
+  query: select name,type,data from registry where key='HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKEY_CURRENT_USER_Environment - ATT&CK
+    T1037
+  name: HKCU_Logon_Scripts
+  query: select * from registry where key='HKEY_CURRENT_USER\Environment';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKCU_Software_Microsoft_Windows_CurrentVersion_Run
+    - ATT&CK T1060
+  name: HKCU_Run
+  query: select name,type,data from registry where key='HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKLM_Software_Microsoft_WindowsNT_CurrentVersion_winlogon
+    - ATT&CK T1004
+  name: HKLM_CurrentVersion_Winlogon
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows
+    NT\CurrentVersion\Winlogon';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKLM_Software_Microsoft_Windows_CurrentVersion_Policies_Explorer_Run
+    - ATT&CK T1060
+  name: HKLM_Explorer_Run
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKLM_Image_File_Execution_Options -
+    ATT&CK T1015
+  name: HKLM_Image_File_Execution_Options
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows
+    NT\CurrentVersion\Image File Execution Options';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: '**AppInit DLLs** Returns the content of the key HKLM_Software_Microsoft_WindowsNT_CurrentVersion_Windows
+    - ATT&CK T1103'
+  name: HKLM_Windows
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows
+    NT\CurrentVersion\Windows' and name='AppInit_DLLs';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKLM_Software_Wow6432Node_Microsoft_WindowsNT_CurrentVersion_winlogon
+    - ATT&CK T1004
+  name: HKLM_Wow6432Node_CurrentVersion_Winlogon
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows
+    NT\CurrentVersion\Winlogon';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: '**AppInit DLLs** Returns the content of the key HKLM_Software_Wow6432Node_Microsoft_Windows
+    NT_CurrentVersion_Windows - ATT&CK T1103'
+  name: HKLM_Wow6432Node_Windows
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows
+    NT\CurrentVersion\Windows' and name='AppInit_DLLs';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: '**Application Shimming** Returns the content of the key HKLM_Software_Microsoft_WindowsNT_CurrentVersion_appcompatflags_custom
+    - ATT&CK T1138'
+  name: HKLM_appcompatflags_custom
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\software\microsoft\windows
+    nt\currentversion\appcompatflags\custom';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: '**Application Shimming** Returns the content of the key HKLM_Software_Microsoft_WindowsNT_CurrentVersion_appcompatflags_installedsdb
+    - ATT&CK T1138'
+  name: HKLM_appcompatflags_installedsdb
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\software\microsoft\windows
+    nt\currentversion\appcompatflags\installedsdb';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKLM_SYSTEM_CurrentControlSet_Control_Lsa
+    - ATT&CK T1131
+  name: HKLM_lsa
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\system\CurrentControlSet\Control\Lsa';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKLM_SYSTEM_CurrentControlSet_Control_Lsa
+    - ATT&CK T1128,S0108
+  name: HKLM_netsh
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Netsh';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKLM_SYSTEM_CurrentControlSet_Service
+    - ATT&CK T1058
+  name: HKLM_service
+  query: select name, type from registry where key='HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKU_Software_Microsoft_Windows_CurrentVersion_Run
+  name: HKU_CurrentVersion_Run
+  query: select name,type,data from registry where key='HKEY_USERS\Software\Microsoft\Windows\CurrentVersion\Run';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKCU_Software_Microsoft_Windows_CurrentVersion_Policies_Explorer_Run
+    - ATT&CK T1060
+  name: Snaphost_HKCU_Explorer_Run
+  query: select name,type,data from registry where key='HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKCU_Software_Microsoft_Windows_CurrentVersion_Run
+    - ATT&CK T1060
+  name: Snaphost_HKCU_Run
+  query: select name,type,data from registry where key='HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKLMU_Software_Microsoft_Windows_CurrentVersion_Policies_Explorer_Run
+    - ATT&CK T1060
+  name: Snaphost_HKLM_Explorer_Run
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: '**AppInit DLLs** Snapshot Returns the content of the key HKLM_Software_Wow6432Node_Microsoft_Windows
+    NT_CurrentVersion_Windows - ATT&CK T1103'
+  name: Snaphost_HKLM_Wow6432Node_windows
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows
+    NT\CurrentVersion\Windows' and name='AppInit_DLLs';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: '**Application Shimming** Snapshot Returns the content of the key HKLM_Software_Microsoft_WindowsNT_CurrentVersion_appcompatflags_custom
+    - ATT&CK T1138'
+  name: Snaphost_HKLM_appcompatflags_custom
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\software\microsoft\windows
+    nt\currentversion\appcompatflags\custom';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: '**Application Shimming** Snapshot Returns the content of the key HKLM_Software_Microsoft_WindowsNT_CurrentVersion_appcompatflags_installedsdb
+    - ATT&CK T1138'
+  name: Snaphost_HKLM_appcompatflags_installedsdb
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\software\microsoft\windows
+    nt\currentversion\appcompatflags\installedsdb';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Snapshot Returns the content of the key HKLM_SYSTEM_CurrentControlSet_Service
+    - ATT&CK T1058
+  name: Snaphost_HKLM_service
+  query: select name, type from registry where key='HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: '**AppInit DLLs** Snapshot Returns the content of the key HKLM_Software_Microsoft_WindowsNT_CurrentVersion_Windows
+    - ATT&CK T1103'
+  name: Snaphost_HKLM_windows
+  query: select name,type,data from registry where key='HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows
+    NT\CurrentVersion\Windows' and name='AppInit_DLLs';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the content of the key HKU_Software_Microsoft_Windows_CurrentVersion_Run
+  name: Snaphost_HKU_CurrentVersion_Run
+  query: select name,type,data from registry where key='HKEY_USERS\Software\Microsoft\Windows\CurrentVersion\Run';

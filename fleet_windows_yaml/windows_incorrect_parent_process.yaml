@@ -1,0 +1,208 @@
+---
+apiVersion: v1
+kind: pack
+spec:
+  disabled: false
+  name: windows-incorrect_parent_process
+  queries:
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1204
+    interval: 60
+    name: chrome.exe_incorrect_parent_process
+    query: chrome.exe_incorrect_parent_process
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1173,T1204
+    interval: 60
+    name: cmd.exe_incorrect_parent_process
+    query: cmd.exe_incorrect_parent_process
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1204
+    interval: 60
+    name: conhost.exe_incorrect_parent_process
+    query: conhost.exe_incorrect_parent_process
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1204
+    interval: 60
+    name: firefox.exe_incorrect_parent_process
+    query: firefox.exe_incorrect_parent_process
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1204
+    interval: 60
+    name: iexplore.exe_incorrect_parent_process
+    query: iexplore.exe_incorrect_parent_process
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1204
+    interval: 60
+    name: lsass.exe_incorrect_parent_process
+    query: lsass.exe_incorrect_parent_process
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1204
+    interval: 60
+    name: notepad++.exe_incorrect_parent_process
+    query: notepad++.exe_incorrect_parent_process
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1204
+    interval: 60
+    name: notepad.exe_incorrect_parent_process
+    query: notepad.exe_incorrect_parent_process
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1173,T1086,T1204
+    interval: 60
+    name: powershell.exe_incorrect_parent_process
+    query: powershell.exe_incorrect_parent_process
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1204
+    interval: 60
+    name: services.exe_incorrect_parent_process
+    query: services.exe_incorrect_parent_process
+    removed: false
+  - description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+      T1204
+    interval: 60
+    name: svchost.exe_incorrect_parent_process
+    query: svchost.exe_incorrect_parent_process
+    removed: false
+  targets:
+    labels: null
+    teams: null
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1204
+  name: chrome.exe_incorrect_parent_process
+  query: SELECT name as bad_parent_child_name, pid bad_parent_child_pid FROM processes
+    WHERE pid=(SELECT parent FROM processes WHERE parent != (SELECT pid from processes
+    where name='explorer.exe') AND LOWER(name)='chrome.exe') OR pid=(SELECT pid FROM
+    processes WHERE parent != (SELECT pid from processes where name='explorer.exe')
+    AND LOWER(name)='chrome.exe');
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1173,T1204
+  name: cmd.exe_incorrect_parent_process
+  query: SELECT name as bad_parent_child_name, pid bad_parent_child_pid FROM processes
+    WHERE pid=(SELECT parent FROM processes WHERE parent!=(SELECT pid from processes
+    where name='explorer.exe') AND LOWER(name)='cmd.exe') OR pid=(SELECT pid FROM
+    processes WHERE parent!=(SELECT pid from processes where name='explorer.exe')
+    AND LOWER(name)='cmd.exe');
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1204
+  name: conhost.exe_incorrect_parent_process
+  query: SELECT name as bad_parent_child_name, pid bad_parent_child_pid FROM processes
+    WHERE pid=(SELECT parent FROM processes WHERE parent != (SELECT pid from processes
+    where name='csrss.exe') AND LOWER(name)='conhost.exe') OR pid=(SELECT pid FROM
+    processes WHERE parent != (SELECT pid from processes where name='csrss.exe') AND
+    LOWER(name)='conhost.exe');
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1204
+  name: firefox.exe_incorrect_parent_process
+  query: SELECT name as bad_parent_child_name, pid bad_parent_child_pid FROM processes
+    WHERE pid=(SELECT parent FROM processes WHERE parent!=(SELECT pid from processes
+    where name='explorer.exe') AND LOWER(name)='firefox.exe') OR pid=(SELECT pid FROM
+    processes WHERE parent!=(SELECT pid from processes where name='explorer.exe')
+    AND LOWER(name)='firefox.exe');
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1204
+  name: iexplore.exe_incorrect_parent_process
+  query: SELECT name as bad_parent_child_name, pid bad_parent_child_pid FROM processes
+    WHERE pid=(SELECT parent FROM processes WHERE parent!=(SELECT pid from processes
+    where name='explorer.exe') AND LOWER(name)='iexplore.exe') OR pid=(SELECT pid
+    FROM processes WHERE parent!=(SELECT pid from processes where name='explorer.exe')
+    AND LOWER(name)='iexplore.exe');
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1204
+  name: lsass.exe_incorrect_parent_process
+  query: SELECT name as bad_parent_child_name, pid bad_parent_child_pid FROM processes
+    WHERE pid=(SELECT parent FROM processes WHERE parent!=(SELECT pid from processes
+    where name='wininit.exe') AND LOWER(name)='lsass.exe') OR pid=(SELECT pid FROM
+    processes WHERE parent!=(SELECT pid from processes where name='wininit.exe') AND
+    LOWER(name)='lsass.exe');
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1204
+  name: notepad++.exe_incorrect_parent_process
+  query: SELECT name as bad_parent_child_name, pid bad_parent_child_pid FROM processes
+    WHERE pid=(SELECT parent FROM processes WHERE parent!=(SELECT pid from processes
+    where name='explorer.exe') AND LOWER(name)='notepad++.exe') OR pid=(SELECT pid
+    FROM processes WHERE parent!=(SELECT pid from processes where name='explorer.exe')
+    AND LOWER(name)='notepad++.exe');
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1204
+  name: notepad.exe_incorrect_parent_process
+  query: SELECT name as bad_parent_child_name, pid bad_parent_child_pid FROM processes
+    WHERE pid=(SELECT parent FROM processes WHERE parent!=(SELECT pid from processes
+    where name='explorer.exe') AND LOWER(name)='notepad.exe') OR pid=(SELECT pid FROM
+    processes WHERE parent!=(SELECT pid from processes where name='explorer.exe')
+    AND LOWER(name)='notepad.exe');
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1173,T1086,T1204
+  name: powershell.exe_incorrect_parent_process
+  query: SELECT name as bad_parent_child_name, pid bad_parent_child_pid FROM processes
+    WHERE pid=(SELECT parent FROM processes WHERE parent!=(SELECT pid from processes
+    where name='explorer.exe') AND LOWER(name)='powershell.exe') OR pid=(SELECT pid
+    FROM processes WHERE parent!=(SELECT pid from processes where name='explorer.exe')
+    AND LOWER(name)='powershell.exe');
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1204
+  name: services.exe_incorrect_parent_process
+  query: SELECT name as bad_parent_child_name, pid bad_parent_child_pid FROM processes
+    WHERE pid=(SELECT parent FROM processes WHERE parent!=(SELECT pid from processes
+    where name='wininit.exe') AND LOWER(name)='services.exe') OR pid=(SELECT pid FROM
+    processes WHERE parent!=(SELECT pid from processes where name='wininit.exe') AND
+    LOWER(name)='services.exe');
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect processes masquerading as legitimate Windows processes - ATT&CK
+    T1204
+  name: svchost.exe_incorrect_parent_process
+  query: SELECT name as bad_parent_child_name, pid bad_parent_child_pid FROM processes
+    WHERE pid=(SELECT parent FROM processes WHERE parent!=(SELECT pid from processes
+    where name='services.exe') AND LOWER(name)='svchost.exe') OR pid=(SELECT pid FROM
+    processes WHERE parent!=(SELECT pid from processes where name='services.exe')
+    AND LOWER(name)='svchost.exe');

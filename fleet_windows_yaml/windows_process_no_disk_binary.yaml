@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: pack
+spec:
+  disabled: false
+  name: windows_process_no_disk_binary
+  queries:
+  - description: Detect Processes running without a binary on disk
+    interval: 3600
+    name: Processes_run_without_binary_disk
+    query: Processes_run_without_binary_disk
+  targets:
+    labels: null
+    teams: null
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Detect Processes running without a binary on disk
+  name: Processes_run_without_binary_disk
+  query: SELECT name, path, pid FROM processes WHERE on_disk = 0;

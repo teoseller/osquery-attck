@@ -1,0 +1,68 @@
+---
+apiVersion: v1
+kind: pack
+spec:
+  disabled: false
+  name: network_connection_listening
+  queries:
+  - description: Returns the Listening port List - ATT&CK T1043,T1090,T1094,T1205,T1219,T1105,T1065,T1102
+    interval: 28800
+    name: Snaphost_Windows_Process_Listening_Port
+    platform: windows
+    query: Snaphost_Windows_Process_Listening_Port
+    snapshot: true
+  - description: Returns the network connections from system processes - ATT&CK T1086,T1093,T1020,T1041,T1011,T1029,T1043,T1090,T1094,T1024,T1008,T1219,T1105,T1065
+    interval: 28800
+    name: Snaphost_Windows_Process_Network_Conn
+    platform: windows
+    query: Snaphost_Windows_Process_Network_Conn
+    snapshot: true
+  - description: Returns the Listening port List - ATT&CK T1043,T1090,T1094,T1205,T1219,T1105,T1065,T1102
+    interval: 600
+    name: Windows_Process_Listening_Port
+    platform: windows
+    query: Windows_Process_Listening_Port
+    removed: false
+  - description: Returns the network connections from system processes - ATT&CK T1086,T1093,T1020,T1041,T1011,T1029,T1043,T1090,T1094,T1024,T1008,T1219,T1105,T1065
+    interval: 60
+    name: Windows_Process_Network_Conn
+    platform: windows
+    query: Windows_Process_Network_Conn
+    removed: false
+  targets:
+    labels: null
+    teams: null
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the Listening port List - ATT&CK T1043,T1090,T1094,T1205,T1219,T1105,T1065,T1102
+  name: Snaphost_Windows_Process_Listening_Port
+  query: select p.name, p.path, lp.port, lp.address, lp.protocol  from listening_ports
+    lp LEFT JOIN processes p ON lp.pid = p.pid WHERE lp.port != 0 AND p.name != '';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the network connections from system processes - ATT&CK T1086,T1093,T1020,T1041,T1011,T1029,T1043,T1090,T1094,T1024,T1008,T1219,T1105,T1065
+  name: Snaphost_Windows_Process_Network_Conn
+  query: select DISTINCT p.name, p.path, pos.remote_address, pos.remote_port from
+    process_open_sockets pos LEFT JOIN processes p ON pos.pid = p.pid WHERE pos.remote_port
+    != 0 AND p.name != '';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the Listening port List - ATT&CK T1043,T1090,T1094,T1205,T1219,T1105,T1065,T1102
+  name: Windows_Process_Listening_Port
+  query: select p.name, p.path, lp.port, lp.address, lp.protocol  from listening_ports
+    lp LEFT JOIN processes p ON lp.pid = p.pid WHERE lp.port != 0 AND p.name != '';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Returns the network connections from system processes - ATT&CK T1086,T1093,T1020,T1041,T1011,T1029,T1043,T1090,T1094,T1024,T1008,T1219,T1105,T1065
+  name: Windows_Process_Network_Conn
+  query: select DISTINCT p.name, p.path, pos.remote_address, pos.remote_port from
+    process_open_sockets pos LEFT JOIN processes p ON pos.pid = p.pid WHERE pos.remote_port
+    != 0 AND p.name != '';

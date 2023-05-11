@@ -1,0 +1,60 @@
+---
+apiVersion: v1
+kind: pack
+spec:
+  disabled: false
+  name: windows_browsere-extensions
+  queries:
+  - description: Snapshot Lists all chrome extensions - ATT&CK T1176
+    interval: 28800
+    name: Snapshot_chrome_extensions
+    query: Snapshot_chrome_extensions
+    snapshot: true
+  - description: Snapshot Lists all internet explorer extensions - ATT&CK T1176
+    interval: 28800
+    name: Snapshot_iexplorer_extensions
+    query: Snapshot_iexplorer_extensions
+    snapshot: true
+  - description: Lists all chrome extensions - ATT&CK T1176
+    interval: 3600
+    name: chrome_extensions
+    query: chrome_extensions
+    removed: false
+  - description: Lists all internet explorer extensions - ATT&CK T1176
+    interval: 3600
+    name: iexplorer_extensions
+    query: iexplorer_extensions
+    removed: false
+  targets:
+    labels: null
+    teams: null
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Snapshot Lists all chrome extensions - ATT&CK T1176
+  name: Snapshot_chrome_extensions
+  query: select u.username, ce.name,ce.identifier,ce.version,ce.description,ce.locale,ce.update_url,ce.author,ce.persistent,ce.path
+    from chrome_extensions ce LEFT JOIN users u ON ce.uid = u.uid;
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Snapshot Lists all internet explorer extensions - ATT&CK T1176
+  name: Snapshot_iexplorer_extensions
+  query: ' select * from  ie_extensions;'
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Lists all chrome extensions - ATT&CK T1176
+  name: chrome_extensions
+  query: select u.username, ce.name,ce.identifier,ce.version,ce.description,ce.locale,ce.update_url,ce.author,ce.persistent,ce.path
+    from chrome_extensions ce LEFT JOIN users u ON ce.uid = u.uid;
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Lists all internet explorer extensions - ATT&CK T1176
+  name: iexplorer_extensions
+  query: select * from ie_extensions;

@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: pack
+spec:
+  disabled: false
+  name: windows_scheduled_tasks
+  queries:
+  - description: Lists all of the tasks in the Windows task scheduler - ATT&CK T1053
+    interval: 3600
+    name: Scheduled_Task
+    platform: windows
+    query: Scheduled_Task
+    removed: false
+  - description: Lists all of the tasks in the Windows task scheduler
+    interval: 28800
+    name: Snaphost_Scheduled_Task
+    platform: windows
+    query: Snaphost_Scheduled_Task
+    snapshot: true
+  targets:
+    labels: null
+    teams: null
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Lists all of the tasks in the Windows task scheduler - ATT&CK T1053
+  name: Scheduled_Task
+  query: select name,action,path,enabled,datetime(next_run_time,'unixepoch','UTC')
+    from scheduled_tasks;
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Lists all of the tasks in the Windows task scheduler
+  name: Snaphost_Scheduled_Task
+  query: select name,action,path,enabled,datetime(next_run_time,'unixepoch','UTC')
+    from scheduled_tasks;
