@@ -1,0 +1,99 @@
+---
+apiVersion: v1
+kind: pack
+spec:
+  disabled: false
+  name: windows_critical_service_status
+  queries:
+  - description: Symantec Endpoint Protection service Status change - ATT&CK T1089
+    interval: 3600
+    name: ' Sophos_Anti-Virus_Services_1'
+    query: ' Sophos_Anti-Virus_Services_1'
+  - description: Snapshot Services query
+    interval: 28800
+    name: Snapshot_services
+    query: Snapshot_services
+    snapshot: true
+  - description: Symantec Endpoint Protection service Status change - ATT&CK T1089
+    interval: 3600
+    name: Sophos_Anti-Virus_Services_2
+    query: Sophos_Anti-Virus_Services_2
+  - description: Symantec Endpoint Protection service Status change - ATT&CK T1089
+    interval: 3600
+    name: Symantec_Endpoint_Protection_Services
+    query: Symantec_Endpoint_Protection_Services
+  - description: Windows Defender service Status change - ATT&CK T1089
+    interval: 3600
+    name: Windows_Defender_Services
+    query: Windows_Defender_Services
+  - description: Windows Firewall service Status change - ATT&CK T1089
+    interval: 3600
+    name: Windows_Firewall_Services
+    query: Windows_Firewall_Services
+  - description: Windows Security Service Status change - ATT&CK T1089
+    interval: 3600
+    name: Windows_Security_Service
+    query: Windows_Security_Service
+  - description: Windows Update Service Status change - ATT&CK T1089
+    interval: 3600
+    name: Windows_Update_Service
+    query: Windows_Update_Service
+  targets:
+    labels: null
+    teams: null
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Symantec Endpoint Protection service Status change - ATT&CK T1089
+  name: ' Sophos_Anti-Virus_Services_1'
+  query: SELECT * FROM services WHERE name = 'SAVAdminService' AND status != 'RUNNING';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Snapshot Services query
+  name: Snapshot_services
+  query: SELECT * FROM services;
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Symantec Endpoint Protection service Status change - ATT&CK T1089
+  name: Sophos_Anti-Virus_Services_2
+  query: SELECT * FROM services WHERE name = 'SavService' AND status != 'RUNNING';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Symantec Endpoint Protection service Status change - ATT&CK T1089
+  name: Symantec_Endpoint_Protection_Services
+  query: SELECT * FROM services WHERE name = 'SepMasterService' AND status != 'RUNNING';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Windows Defender service Status change - ATT&CK T1089
+  name: Windows_Defender_Services
+  query: SELECT * FROM services WHERE name = 'WinDefend' AND status != 'RUNNING';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Windows Firewall service Status change - ATT&CK T1089
+  name: Windows_Firewall_Services
+  query: SELECT * FROM services WHERE name = 'MpsSvc' AND status != 'RUNNING';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Windows Security Service Status change - ATT&CK T1089
+  name: Windows_Security_Service
+  query: SELECT * FROM services WHERE name = 'wscsvc' AND status != 'RUNNING';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Windows Update Service Status change - ATT&CK T1089
+  name: Windows_Update_Service
+  query: SELECT * FROM services WHERE name = 'wuauserv' AND status != 'RUNNING';

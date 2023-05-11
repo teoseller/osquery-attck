@@ -1,0 +1,173 @@
+---
+apiVersion: v1
+kind: pack
+spec:
+  disabled: false
+  name: windows_new_file_relevant_infection_path
+  queries:
+  - description: Check suspicious file creation under AppData\Local - ATT&CK T1034,T1074,T1044
+    interval: 1860
+    name: AppData_Local
+    platform: windows
+    query: AppData_Local
+    removed: false
+  - description: Check suspicious file creation under %TEMP% or AppData\Local\Temp
+      - ATT&CK T1034,T1074,T1044
+    interval: 1900
+    name: AppData_Local_temp
+    platform: windows
+    query: AppData_Local_temp
+    removed: false
+  - description: Check suspicious file creation under %APPDATA% or %\AppData\Roaming
+      - ATT&CK T1034,T1074,T1044
+    interval: 1840
+    name: AppData_Roaming
+    platform: windows
+    query: AppData_Roaming
+    removed: false
+  - description: Check suspicious file creation under ProgramData\Microsoft\Windows\Start
+      Menu - ATT&CK T1060,T1023
+    interval: 1860
+    name: Programmata_StartMenu
+    platform: windows
+    query: Programmata_StartMenu
+    removed: false
+  - description: Check suspicious file creation under ProgramData\Microsoft\Windows\Start
+      Menu\Programs - ATT&CK T1060,T1023
+    interval: 1860
+    name: Programmata_StartMenu_program
+    platform: windows
+    query: Programmata_StartMenu_program
+    removed: false
+  - description: Check suspicious file creation under Roaming\Microsoft\Windows\Start
+      Menu\Programs - ATT&CK T1060,T1023
+    interval: 1860
+    name: User_StartMenu_program
+    platform: windows
+    query: User_StartMenu_program
+    removed: false
+  - description: Check suspicious file creation under Roaming\Microsoft\Windows\Start
+      Menu\Programs\Startup - ATT&CK T1060,T1023
+    interval: 1860
+    name: User_StartMenu_startup
+    platform: windows
+    query: User_StartMenu_startup
+    removed: false
+  - description: Check suspicious file creation under c:\windows - ATT&CK T1034,T1074,T1044
+    interval: 1800
+    name: windows_new_file
+    platform: windows
+    query: windows_new_file
+    removed: false
+  - description: Check suspicious file creation under c:\windows\temp - ATT&CK T1034,T1074,T1044
+    interval: 1820
+    name: windows_temp
+    platform: windows
+    query: windows_temp
+    removed: false
+  targets:
+    labels: null
+    teams: null
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Check suspicious file creation under AppData\Local - ATT&CK T1034,T1074,T1044
+  name: AppData_Local
+  query: SELECT hash.md5, path, file.filename, datetime(file.btime, 'unixepoch', 'UTC')
+    as btime, datetime(file.atime, 'unixepoch', 'UTC') as atime, datetime(file.ctime,
+    'unixepoch', 'UTC') as ctime, datetime(file.mtime, 'unixepoch', 'UTC') as mtime
+    FROM hash JOIN file USING (path) where path like 'C:\users\%\AppData\Local\%'
+    and type='regular';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Check suspicious file creation under %TEMP% or AppData\Local\Temp -
+    ATT&CK T1034,T1074,T1044
+  name: AppData_Local_temp
+  query: SELECT hash.md5, path, file.filename, datetime(file.btime, 'unixepoch', 'UTC')
+    as btime, datetime(file.atime, 'unixepoch', 'UTC') as atime, datetime(file.ctime,
+    'unixepoch', 'UTC') as ctime, datetime(file.mtime, 'unixepoch', 'UTC') as mtime
+    FROM hash JOIN file USING (path) where path like 'C:\users\%\AppData\Local\temp\%'
+    and type='regular';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Check suspicious file creation under %APPDATA% or %\AppData\Roaming
+    - ATT&CK T1034,T1074,T1044
+  name: AppData_Roaming
+  query: SELECT hash.md5, path, file.filename, datetime(file.btime, 'unixepoch', 'UTC')
+    as btime, datetime(file.atime, 'unixepoch', 'UTC') as atime, datetime(file.ctime,
+    'unixepoch', 'UTC') as ctime, datetime(file.mtime, 'unixepoch', 'UTC') as mtime
+    FROM hash JOIN file USING (path) where path like 'C:\users\%\AppData\Roaming\%'
+    and type='regular';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Check suspicious file creation under ProgramData\Microsoft\Windows\Start
+    Menu - ATT&CK T1060,T1023
+  name: Programmata_StartMenu
+  query: SELECT hash.md5, path, file.filename, datetime(file.btime, 'unixepoch', 'UTC')
+    as btime, datetime(file.atime, 'unixepoch', 'UTC') as atime, datetime(file.ctime,
+    'unixepoch', 'UTC') as ctime, datetime(file.mtime, 'unixepoch', 'UTC') as mtime
+    FROM hash JOIN file USING (path) where path like 'C:\ProgramData\Microsoft\Windows\Start
+    Menu\%' AND type='regular';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Check suspicious file creation under ProgramData\Microsoft\Windows\Start
+    Menu\Programs - ATT&CK T1060,T1023
+  name: Programmata_StartMenu_program
+  query: SELECT hash.md5, path, file.filename, datetime(file.btime, 'unixepoch', 'UTC')
+    as btime, datetime(file.atime, 'unixepoch', 'UTC') as atime, datetime(file.ctime,
+    'unixepoch', 'UTC') as ctime, datetime(file.mtime, 'unixepoch', 'UTC') as mtime
+    FROM hash JOIN file USING (path) where path like 'C:\ProgramData\Microsoft\Windows\Start
+    Menu\Programs\%' AND type='regular';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Check suspicious file creation under Roaming\Microsoft\Windows\Start
+    Menu\Programs - ATT&CK T1060,T1023
+  name: User_StartMenu_program
+  query: SELECT hash.md5, path, file.filename, datetime(file.btime, 'unixepoch', 'UTC')
+    as btime, datetime(file.atime, 'unixepoch', 'UTC') as atime, datetime(file.ctime,
+    'unixepoch', 'UTC') as ctime, datetime(file.mtime, 'unixepoch', 'UTC') as mtime
+    FROM hash JOIN file USING (path) where path like 'C:\users\%\AppData\Roaming\Microsoft\Windows\Start
+    Menu\Programs\%' AND type='regular';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Check suspicious file creation under Roaming\Microsoft\Windows\Start
+    Menu\Programs\Startup - ATT&CK T1060,T1023
+  name: User_StartMenu_startup
+  query: SELECT hash.md5, path, file.filename, datetime(file.btime, 'unixepoch', 'UTC')
+    as btime, datetime(file.atime, 'unixepoch', 'UTC') as atime, datetime(file.ctime,
+    'unixepoch', 'UTC') as ctime, datetime(file.mtime, 'unixepoch', 'UTC') as mtime
+    FROM hash JOIN file USING (path) where path like 'C:\users\%\AppData\Roaming\Microsoft\Windows\Start
+    Menu\Programs\Startup\%' AND type='regular';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Check suspicious file creation under c:\windows - ATT&CK T1034,T1074,T1044
+  name: windows_new_file
+  query: SELECT hash.md5, path, file.filename, datetime(file.btime, 'unixepoch', 'UTC')
+    as btime, datetime(file.atime, 'unixepoch', 'UTC') as atime, datetime(file.ctime,
+    'unixepoch', 'UTC') as ctime, datetime(file.mtime, 'unixepoch', 'UTC') as mtime
+    FROM hash JOIN file USING (path) where path like 'C:\Windows\%' and type='regular';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Check suspicious file creation under c:\windows\temp - ATT&CK T1034,T1074,T1044
+  name: windows_temp
+  query: SELECT hash.md5, path, file.filename, datetime(file.btime, 'unixepoch', 'UTC')
+    as btime, datetime(file.atime, 'unixepoch', 'UTC') as atime, datetime(file.ctime,
+    'unixepoch', 'UTC') as ctime, datetime(file.mtime, 'unixepoch', 'UTC') as mtime
+    FROM hash JOIN file USING (path) where path like 'C:\Windows\temp\%' and type='regular';

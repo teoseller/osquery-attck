@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: pack
+spec:
+  disabled: false
+  name: windows_system_running_processes
+  queries:
+  - description: Snapshot List Windows System running processes - ATT&CK T1034,T1121,T1117,T1085
+    interval: 28800
+    name: snapshot_system_running_processes
+    query: snapshot_system_running_processes
+    snapshot: true
+  - description: List Windows System running processes. - ATT&CK T1034,T1121,T1117,T1085
+    interval: 3600
+    name: system_running_processes
+    query: system_running_processes
+  targets:
+    labels: null
+    teams: null
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Snapshot List Windows System running processes - ATT&CK T1034,T1121,T1117,T1085
+  name: snapshot_system_running_processes
+  query: select processes.pid, processes.name, users.username, processes.path from
+    processes LEFT JOIN users ON processes.uid = users.uid WHERE processes.path !=
+    '';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: List Windows System running processes. - ATT&CK T1034,T1121,T1117,T1085
+  name: system_running_processes
+  query: select processes.pid, processes.name, users.username, processes.path, processes.cmdline
+    from processes LEFT JOIN users ON processes.uid = users.uid WHERE processes.path
+    != '';

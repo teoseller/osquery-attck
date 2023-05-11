@@ -1,0 +1,489 @@
+---
+apiVersion: v1
+kind: pack
+spec:
+  disabled: false
+  name: windows_anomaly_process-execution
+  queries:
+  - description: InstallUtil Execute, InstallUtil is a command-line utility that allows
+      for installation and uninstallation of resources by executing specific installer
+      components specified in .NET binaries - ATT&CK T1118
+    interval: 600
+    name: InstallUtil.exe
+    platform: windows
+    query: InstallUtil.exe
+  - description: PsExec Execute, is a free Microsoft tool that can be used to execute
+      a program on another computer. - ATT&CK T1035,S0029
+    interval: 600
+    name: PsExec.exe
+    platform: windows
+    query: PsExec.exe
+  - description: Snapshot Prefetach File Directory - ATT&CK T1107
+    interval: 28800
+    name: Snaphost_Prefetch_File
+    platform: windows
+    query: Snaphost_Prefetch_File
+    snapshot: true
+  - description: Schtasks Execute, usaullay used to create a scheduled task - ATT&CK
+      T1053,S0110
+    interval: 600
+    name: at.exe
+    platform: windows
+    query: at.exe
+  - description: Attrib Execute, usaullay used to modify file attributes - ATT&CK
+      T1158
+    interval: 600
+    name: attrib.exe
+    platform: windows
+    query: attrib.exe
+  - description: Bitsadmin Execute, Windows Background Intelligent Transfer Service
+      (BITS) is a low-bandwidth, asynchronous file transfer mechanism exposed through
+      Component Object Model (COM) - ATT&CK T1197,S0190
+    interval: 600
+    name: bitsadmin.exe
+    platform: windows
+    query: bitsadmin.exe
+  - description: Certutil Execute, Certutil.exe is a legitimate built-in command-line
+      program to manage certificates in Windows - ATT&CK T1105,T1140,T1130,S0160
+    interval: 600
+    name: certutil.exe
+    platform: windows
+    query: certutil.exe
+  - description: Command-Line Interface Execute, CMD execution - ATT&CK T1059
+    interval: 600
+    name: cmd.exe
+    platform: windows
+    query: cmd.exe
+  - description: CMSTP Execute, The Microsoft Connection Manager Profile Installer
+      (CMSTP.exe) is a command-line program used to install Connection Manager service
+      profiles. - ATT&CK T1191
+    interval: 600
+    name: cmstp.exe
+    platform: windows
+    query: cmstp.exe
+  - description: Command-Line Interface Execute, Cscript execution starts a script
+      so that it runs in a command-line environment. - ATT&CK T1216
+    interval: 600
+    name: cscript.exe
+    platform: windows
+    query: cscript.exe
+  - description: Esentutl Execute, is a legitimate built-in command-line program it
+      could be used to create a exe from dump raw source.
+    interval: 600
+    name: esentutl.exe
+    platform: windows
+    query: esentutl.exe
+  - description: Mshta Execute, is a utility that executes Microsoft HTML Applications
+      (HTA) - ATT&CK T1170
+    interval: 600
+    name: mshta.exe
+    platform: windows
+    query: mshta.exe
+  - description: mstsc.exe Execute, usaullay used to perform a RDP Session  - ATT&CK
+      T1076
+    interval: 600
+    name: mstsc.exe
+    platform: windows
+    query: mstsc.exe
+  - description: Net Execute, is used in command-line operations for control of users,
+      groups, services, and network connections - ATT&CK T1126,T1087,T1201,T1069,S0039,T1018,T1007,T1124
+    interval: 600
+    name: net.exe
+    platform: windows
+    query: net.exe
+  - description: Netsh Execute, Netsh.exe (also referred to as Netshell) is a command-line
+      scripting utility used to interact with the network configuration of a system
+      - ATT&CK T1128,T1063,S0108
+    interval: 600
+    name: netsh.exe
+    platform: windows
+    query: netsh.exe
+  - description: Netstat Execute,  is an operating system utility that displays active
+      TCP connections, listening ports, and network statistics. - ATT&CK T1049,S0104
+    interval: 600
+    name: netstat.exe
+    platform: windows
+    query: netstat.exe
+  - description: POWERSHELL Execute, is a powerful interactive command-line interface
+      and scripting environment included in the Windows operating system - ATT&CK
+      T1086
+    interval: 600
+    name: powershell.exe
+    platform: windows
+    query: powershell.exe
+  - description: Reg Execute, Reg is a Windows utility used to interact with the Windows
+      Registry.  - ATT&CK T1214,T1012,T1063,S0075
+    interval: 600
+    name: reg.exe
+    platform: windows
+    query: reg.exe
+  - description: Regedit Execute, is a Windows utility used to interact with the Windows
+      Registry. - ATT&CK T1214
+    interval: 600
+    name: regedit.exe
+    platform: windows
+    query: regedit.exe
+  - description: POWERSHELL Execute, is a powerful interactive command-line interface
+      and scripting environment included in the Windows operating system - ATT&CK
+      T1117
+    interval: 600
+    name: regsvr32.exe
+    platform: windows
+    query: regsvr32.exe
+  - description: Runas Execute, Allows a user to run specific tools and programs with
+      different permissions than the user's current logon provides. - ATT&CK T1134
+    interval: 600
+    name: runas.exe
+    platform: windows
+    query: runas.exe
+  - description: SC.exe Execute, Service Control - Create, Start, Stop, Query or Delete
+      any Windows SERVICE. . - ATT&CK T1007
+    interval: 600
+    name: sc.exe
+    platform: windows
+    query: sc.exe
+  - description: Schtasks Execute, usaullay used to create a scheduled task - ATT&CK
+      T1053,S0111
+    interval: 600
+    name: schtasks.exe
+    platform: windows
+    query: schtasks.exe
+  - description: SVCHOST Processes not using the -k [name] convention
+    interval: 600
+    name: svchost.exe_no_K_option
+    platform: windows
+    query: svchost.exe_no_K_option
+  - description: Systeminfo Execute, Systeminfo is a Windows utility that can be used
+      to gather detailed information about a computer. - ATT&CK T1082,S0096
+    interval: 600
+    name: systeminfo.exe
+    platform: windows
+    query: systeminfo.exe
+  - description: taskeng Execute, usaullay used to create a scheduled task - ATT&CK
+      T1053
+    interval: 600
+    name: taskeng.exe
+    platform: windows
+    query: taskeng.exe
+  - description: 'Taskkill Execute, usaullay used to kill task '
+    interval: 600
+    name: taskkill.exe
+    platform: windows
+    query: taskkill.exe
+  - description: Tasklist Execute, usaullay used to list task - ATT&CK T1057,T1063,T1007,S0057
+    interval: 600
+    name: tasklist.exe
+    platform: windows
+    query: tasklist.exe
+  - description: tscon.exe Execute, usaullay used to Terminal Services Console - ATT&CK
+      T1076
+    interval: 600
+    name: tscon.exe
+    platform: windows
+    query: tscon.exe
+  - description: Vssadmin Execute, usaullay used to execute activity on Volume Shadow
+      copy
+    interval: 600
+    name: vssadmin.exe
+    platform: windows
+    query: vssadmin.exe
+  - description: Whoami Execute, used to prints the effective username of the current
+      user
+    interval: 600
+    name: whoami.exe
+    platform: windows
+    query: whoami.exe
+  - description: Xcopy Execute, is used for copying multiple files or entire directory
+      trees from one directory to another and for copying files across a network.
+    interval: 600
+    name: xcopy.exe
+    platform: windows
+    query: xcopy.exe
+  targets:
+    labels: null
+    teams: null
+---
+apiVersion: v1
+kind: query
+spec:
+  description: InstallUtil Execute, InstallUtil is a command-line utility that allows
+    for installation and uninstallation of resources by executing specific installer
+    components specified in .NET binaries - ATT&CK T1118
+  name: InstallUtil.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%InstallUtil%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: PsExec Execute, is a free Microsoft tool that can be used to execute
+    a program on another computer. - ATT&CK T1035,S0029
+  name: PsExec.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%PsExec%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Snapshot Prefetach File Directory - ATT&CK T1107
+  name: Snaphost_Prefetch_File
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Schtasks Execute, usaullay used to create a scheduled task - ATT&CK
+    T1053,S0110
+  name: at.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%at.exe%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Attrib Execute, usaullay used to modify file attributes - ATT&CK T1158
+  name: attrib.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%attrib%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Bitsadmin Execute, Windows Background Intelligent Transfer Service
+    (BITS) is a low-bandwidth, asynchronous file transfer mechanism exposed through
+    Component Object Model (COM) - ATT&CK T1197,S0190
+  name: bitsadmin.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%bitsadmin%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Certutil Execute, Certutil.exe is a legitimate built-in command-line
+    program to manage certificates in Windows - ATT&CK T1105,T1140,T1130,S0160
+  name: certutil.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%certutil%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Command-Line Interface Execute, CMD execution - ATT&CK T1059
+  name: cmd.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%CMD%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: CMSTP Execute, The Microsoft Connection Manager Profile Installer (CMSTP.exe)
+    is a command-line program used to install Connection Manager service profiles.
+    - ATT&CK T1191
+  name: cmstp.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%CMSTP%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Command-Line Interface Execute, Cscript execution starts a script so
+    that it runs in a command-line environment. - ATT&CK T1216
+  name: cscript.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%cscript%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Esentutl Execute, is a legitimate built-in command-line program it
+    could be used to create a exe from dump raw source.
+  name: esentutl.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%esentutl%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Mshta Execute, is a utility that executes Microsoft HTML Applications
+    (HTA) - ATT&CK T1170
+  name: mshta.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%mshta%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: mstsc.exe Execute, usaullay used to perform a RDP Session  - ATT&CK
+    T1076
+  name: mstsc.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%mstsc%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Net Execute, is used in command-line operations for control of users,
+    groups, services, and network connections - ATT&CK T1126,T1087,T1201,T1069,S0039,T1018,T1007,T1124
+  name: net.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%net.exe%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Netsh Execute, Netsh.exe (also referred to as Netshell) is a command-line
+    scripting utility used to interact with the network configuration of a system
+    - ATT&CK T1128,T1063,S0108
+  name: netsh.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%netsh%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Netstat Execute,  is an operating system utility that displays active
+    TCP connections, listening ports, and network statistics. - ATT&CK T1049,S0104
+  name: netstat.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%netstat%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: POWERSHELL Execute, is a powerful interactive command-line interface
+    and scripting environment included in the Windows operating system - ATT&CK T1086
+  name: powershell.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%POWERSHELL%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Reg Execute, Reg is a Windows utility used to interact with the Windows
+    Registry.  - ATT&CK T1214,T1012,T1063,S0075
+  name: reg.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%reg%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Regedit Execute, is a Windows utility used to interact with the Windows
+    Registry. - ATT&CK T1214
+  name: regedit.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%regedit%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: POWERSHELL Execute, is a powerful interactive command-line interface
+    and scripting environment included in the Windows operating system - ATT&CK T1117
+  name: regsvr32.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%regsvr%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Runas Execute, Allows a user to run specific tools and programs with
+    different permissions than the user's current logon provides. - ATT&CK T1134
+  name: runas.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%runas%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: SC.exe Execute, Service Control - Create, Start, Stop, Query or Delete
+    any Windows SERVICE. . - ATT&CK T1007
+  name: sc.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%sc%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Schtasks Execute, usaullay used to create a scheduled task - ATT&CK
+    T1053,S0111
+  name: schtasks.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%schtasks%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: SVCHOST Processes not using the -k [name] convention
+  name: svchost.exe_no_K_option
+  query: select * from processes where name like 'svchost.exe' and cmdline not like
+    '%-k%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Systeminfo Execute, Systeminfo is a Windows utility that can be used
+    to gather detailed information about a computer. - ATT&CK T1082,S0096
+  name: systeminfo.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%systeminfo%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: taskeng Execute, usaullay used to create a scheduled task - ATT&CK
+    T1053
+  name: taskeng.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%taskeng%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: 'Taskkill Execute, usaullay used to kill task '
+  name: taskkill.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%taskkill%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Tasklist Execute, usaullay used to list task - ATT&CK T1057,T1063,T1007,S0057
+  name: tasklist.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%tasklist%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: tscon.exe Execute, usaullay used to Terminal Services Console - ATT&CK
+    T1076
+  name: tscon.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%tscon%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Vssadmin Execute, usaullay used to execute activity on Volume Shadow
+    copy
+  name: vssadmin.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%vssadmin%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Whoami Execute, used to prints the effective username of the current
+    user
+  name: whoami.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%whoami%';
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Xcopy Execute, is used for copying multiple files or entire directory
+    trees from one directory to another and for copying files across a network.
+  name: xcopy.exe
+  query: select * from file WHERE directory = 'C:\Windows\Prefetch\' and filename
+    like '%xcopy%';

@@ -1,0 +1,137 @@
+---
+apiVersion: v1
+kind: pack
+spec:
+  disabled: false
+  name: windows_generic_detection
+  queries:
+  - description: Local system users. - ATT&CK T1116,T1130
+    interval: 3600
+    name: certificates
+    query: certificates
+  - description: Users snapshot query - ATT&CK T1116,T1130
+    interval: 28800
+    name: certificates_snapshot
+    query: certificates_snapshot
+    snapshot: true
+  - description: Users with an active shell on the system. - ATT&CK T1075,T1097
+    interval: 3600
+    name: logged_in_users
+    query: logged_in_users
+  - description: Local system users.
+    interval: 3600
+    name: programs
+    query: programs
+  - description: Local system users.
+    interval: 28800
+    name: programs_snapshot
+    query: programs_snapshot
+    snapshot: true
+  - description: System information for identification.
+    interval: 3600
+    name: system_info
+    query: system_info
+  - description: System info snapshot query
+    interval: 28800
+    name: system_info_snapshot
+    query: system_info_snapshot
+    snapshot: true
+  - description: System uptime
+    interval: 28800
+    name: uptime
+    query: uptime
+    snapshot: true
+  - description: Local system users. - ATT&CK T1136,T1078
+    interval: 3600
+    name: users
+    query: users
+  - description: Users snapshot query - ATT&CK T1136,T1078
+    interval: 28800
+    name: users_snapshot
+    query: users_snapshot
+    snapshot: true
+  - description: Extracted information from Windows crash logs (Minidumps).
+    interval: 3600
+    name: windows_crashes
+    query: windows_crashes
+    removed: false
+  targets:
+    labels: null
+    teams: null
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Local system users. - ATT&CK T1116,T1130
+  name: certificates
+  query: select * from certificates;
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Users snapshot query - ATT&CK T1116,T1130
+  name: certificates_snapshot
+  query: select * from certificates;
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Users with an active shell on the system. - ATT&CK T1075,T1097
+  name: logged_in_users
+  query: select * from logged_in_users;
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Local system users.
+  name: programs
+  query: SELECT * FROM users;
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Local system users.
+  name: programs_snapshot
+  query: select * from programs;
+---
+apiVersion: v1
+kind: query
+spec:
+  description: System information for identification.
+  name: system_info
+  query: SELECT * FROM system_info;
+---
+apiVersion: v1
+kind: query
+spec:
+  description: System info snapshot query
+  name: system_info_snapshot
+  query: SELECT * FROM system_info;
+---
+apiVersion: v1
+kind: query
+spec:
+  description: System uptime
+  name: uptime
+  query: SELECT * FROM uptime;
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Local system users. - ATT&CK T1136,T1078
+  name: users
+  query: SELECT * FROM users;
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Users snapshot query - ATT&CK T1136,T1078
+  name: users_snapshot
+  query: SELECT * FROM users;
+---
+apiVersion: v1
+kind: query
+spec:
+  description: Extracted information from Windows crash logs (Minidumps).
+  name: windows_crashes
+  query: SELECT * FROM windows_crashes;
